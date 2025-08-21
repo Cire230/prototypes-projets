@@ -81,3 +81,18 @@ if (searchToggleIcon && searchContainer && searchInput) {
         }
     });
 }
+
+// =============================================
+// Logique pour le menu de navigation mobile
+// =============================================
+const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
+const mainNav = document.querySelector('.main-nav');
+const body = document.querySelector('body');
+
+if (mobileNavToggle && mainNav) {
+    mobileNavToggle.addEventListener('click', function() {
+        mainNav.classList.toggle('active');
+        mobileNavToggle.classList.toggle('active');
+        body.classList.toggle('no-scroll'); // Empêche le défilement de la page derrière le menu
+    });
+}
