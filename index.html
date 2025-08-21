@@ -21,13 +21,18 @@
     <!-- ==================== EN-TÊTE ==================== -->
     <header class="main-header">
         <div class="container">
-            <a href="#" class="logo-link">
-                <!-- Remplacer par le vrai logo si disponible -->
+            <!-- NOUVEL ÉLÉMENT : ICÔNE BURGER POUR MOBILE -->
+            <button class="mobile-nav-toggle" aria-controls="main-nav" aria-expanded="false">
+                <span class="sr-only">Menu</span>
+                <span class="burger-icon"></span>
+            </button>
+
+            <a href="index.html" class="logo-link">
                 <img src="logo.png" alt="MADA i24H NEWS Logo" class="logo">
             </a>
             <nav class="main-nav">
                 <ul>
-                    <li><a href="#">Accueil</a></li>
+                    <li><a href="index.html">Accueil</a></li> <!-- Lien vers l'accueil -->
                     <li><a href="#">Sociale</a></li>
                     <li><a href="#">Politique</a></li>
                     <li><a href="#">Environnement</a></li>
@@ -36,7 +41,6 @@
                     <li><a href="#">Culturel</a></li>
                 </ul>
             </nav>
-            <!-- NOUVELLE STRUCTURE POUR LA RECHERCHE INTERACTIVE -->
             <div class="header-search">
                 <form action="#" class="search-form">
                     <input type="search" class="search-input" placeholder="Rechercher sur le site...">
