@@ -906,3 +906,172 @@ main {
 .card-content h3 a:hover {
     color: var(--color-red);
 }
+
+/* ==========================================================================
+   ======                  CSS RESPONSIVE - TOUT LE SITE                 ======
+   ========================================================================== */
+
+/* =============================================
+   Breakpoint 1 : Tablettes & Petits Laptops (~992px)
+   ============================================= */
+@media (max-width: 992px) {
+    .container {
+        display: block;
+        max-width: 90%;
+        padding: 0;
+    }
+
+    /* --- Header --- */
+    .logo {
+        height: 80px;
+    }
+    .main-nav {
+        padding-left: 150px;
+    }
+    .main-nav ul {
+        gap: 20px;
+    }
+    .main-nav a {
+        font-size: 1rem;
+    }
+
+    /* --- Grilles d'articles --- */
+    .articles-grid,
+    .articles-grid-2-cols {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    /* --- Layout Principal --- */
+    .main-layout {
+        grid-template-columns: 1fr; /* On empile le contenu et la sidebar */
+    }
+    .sidebar {
+        position: static; /* On annule l'effet sticky */
+        margin-top: 40px;
+    }
+
+    /* --- Page Article --- */
+    .article-header h1 {
+        font-size: 2.2rem;
+    }
+}
+
+
+/* =============================================
+   Breakpoint 2 : Mobiles (~768px)
+   ============================================= */
+/* ==========================================================================
+   NOUVELLE VERSION DU HEADER MOBILE (À REMPLACER)
+   ========================================================================== */
+
+/* Styles initiaux des éléments mobiles (cachés sur desktop) */
+.mobile-nav-toggle {
+    display: none; /* Reste caché sur les grands écrans */
+}
+.sr-only { /* Pour l'accessibilité, texte lu par les lecteurs d'écran */
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+/* =============================================
+   Breakpoint : Mobiles (~768px et moins)
+   ============================================= */
+@media (max-width: 768px) {
+    .main-header {
+        padding: 30px 0;
+    }
+
+    /* --- Affichage et Positionnement du Header --- */
+    .main-header .container {
+        position: relative; /* Pour positionner le burger au centre */
+        justify-content: space-between; /* Pousse le logo à gauche et la recherche à droite */
+    }
+
+    .logo { height: 60px; }
+    .logo-link { order: 1; } /* Logo à gauche */
+    .header-search { order: 3; } /* Recherche à droite */
+
+    /* Cacher la navigation desktop */
+    .main-nav { 
+        /* Le code pour le panneau latéral reste le même */
+        position: fixed;
+        top: 0;
+        left: -100%;
+        width: 80%;
+        height: 100vh;
+        background-color: var(--color-dark-gray);
+        padding: 100px 30px 30px 30px;
+        transition: left 0.4s ease-in-out;
+        z-index: 1000;
+        overflow-y: auto;
+    }
+    .main-nav.active { left: 0; }
+    
+    .main-nav ul {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 25px;
+    } 
+
+    .header-search {
+        display: none;
+    }
+
+    /* --- Le Bouton Burger et son Animation en Croix --- */
+    .mobile-nav-toggle {
+        display: block; /* ON L'AFFICHE ENFIN ! */
+        position: absolute;
+        left: 90%;
+        top: 50%;
+        transform: translate(-50%, -50%); /* Centrage parfait */
+        order: 2; /* Positionné au milieu */
+        z-index: 1001; /* Au-dessus de tout */
+        background: transparent;
+        border: none;
+        width: 30px;
+        height: 24px;
+        cursor: pointer;
+    }
+
+    .burger-icon {
+        display: block;
+        position: relative;
+        width: 100%;
+        height: 3px;
+        background-color: var(--color-white);
+        transition: all 0.2s ease-in-out;
+    }
+
+    .burger-icon::before,
+    .burger-icon::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        width: 100%;
+        height: 3px;
+        background-color: var(--color-white);
+        transition: all 0.2s ease-in-out;
+    }
+
+    .burger-icon::before { top: -8px; }
+    .burger-icon::after { bottom: -8px; }
+
+    /* L'animation en croix quand le menu est actif */
+    .mobile-nav-toggle.active .burger-icon {
+        background-color: transparent; /* La barre du milieu disparaît */
+    }
+
+    .mobile-nav-toggle.active .burger-icon::before {
+        transform: translateY(8px) rotate(45deg);
+    }
+    .mobile-nav-toggle.active .burger-icon::after {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+}
