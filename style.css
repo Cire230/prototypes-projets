@@ -838,3 +838,71 @@ main {
     font-size: 0.8rem;
     color: #888;
 }
+
+/* ==================== EFFET HOVER CARTE ARTICLE ==================== */
+
+/* 1. Le conteneur de l'image devient le parent de référence pour l'overlay */
+.card-image-container {
+    position: relative; /* Indispensable pour positionner l'overlay en absolu */
+    overflow: hidden; /* Cache le surplus de l'image lors du zoom */
+}
+
+/* 2. Le style de l'overlay lui-même */
+.card-overlay {
+    position: absolute; /* Se positionne par-dessus l'image */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    /* Centrage du contenu (icône + texte) */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    /* Apparence */
+    background-color: rgba(0, 87, 224, 0.8); /* Le bleu du site avec 80% d'opacité */
+    color: var(--color-white);
+    text-decoration: none;
+
+    /* Animation */
+    opacity: 0; /* Caché par défaut */
+    transition: opacity 0.3s ease-in-out;
+}
+
+.card-overlay i {
+    font-size: 2.5rem; /* Taille de l'icône oeil */
+    margin-bottom: 10px;
+}
+
+.card-overlay span {
+    font-family: var(--font-title);
+    text-transform: uppercase;
+    font-size: 1.1rem;
+}
+
+/* 3. L'effet au survol de la carte entière */
+.article-card:hover .card-overlay {
+    opacity: 1; /* On fait apparaître l'overlay */
+}
+
+/* 4. Bonus : Léger zoom sur l'image pour un effet plus dynamique */
+.article-card img {
+    transition: transform 0.3s ease-in-out;
+}
+
+.article-card:hover img {
+    transform: scale(1.05); /* L'image zoome légèrement */
+}
+
+/* 5. On s'assure que le titre dans .card-content est bien un lien stylisé */
+.card-content h3 a {
+    text-decoration: none;
+    color: var(--color-dark-gray);
+    transition: color 0.3s;
+}
+
+.card-content h3 a:hover {
+    color: var(--color-red);
+}
