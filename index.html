@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <!-- Polices Google Fonts (nous les garderons pour Tailwind) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- Fichier CSS actuel (sera remplacé par Tailwind plus tard) -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- ... vos autres liens (fonts, font-awesome) ... -->
+    <script src="https://cdn.tailwindcss.com"></script> <!-- AJOUTER CETTE LIGNE -->
+
+    <!-- Icônes Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+
+    <style>
+        /* --- ANIMATION DU POP-UP --- */
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+    @keyframes zoomIn {
+        from { transform: scale(0.9); opacity: 0; }
+        to { transform: scale(1); opacity: 1; }
+    }
+
+    #maquette-selector-popup {
+        animation: fadeIn 0.5s ease-out;
+    }
+
+    #maquette-selector-popup > div {
+        animation: zoomIn 0.5s ease-out;
+    }
+    </style>
+</head>
+<body>
+
+<!-- ==================== POP-UP DE SÉLECTION DE MAQUETTE ==================== -->
+<div id="maquette-selector-popup" class="fixed inset-0 z-[100] flex items-center justify-center bg-black/70 backdrop-blur-sm">
+    <div class="bg-white dark:bg-gray-800 text-center p-8 md:p-12 shadow-2xl max-w-4xl w-11/12">
+        
+        <!-- Logo -->
+        <div class="mb-8">
+            <img src="logo.png" alt="MADA i24H NEWS Logo" class="h-24 mx-auto">
+        </div>
+
+        <!-- Titre -->
+        <h1 class="font-title text-3xl md:text-4xl uppercase text-dark dark:text-white mb-4">
+            Bienvenue sur le Prototype
+        </h1>
+        <p class="text-gray-600 dark:text-gray-300 mb-10">
+            Veuillez choisir la direction artistique que vous souhaitez explorer.
+        </p>
+
+        <!-- Grille de sélection -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            
+            <!-- Option 1: Maquette Classique -->
+            <a href="prototype-mada-news/index.html" class="maquette-choice group">
+                <div class="border-2 border-gray-200 dark:border-gray-700 p-6 group-hover:border-primary dark:group-hover:border-accent transition-all duration-300">
+                    <h2 class="font-title text-2xl uppercase text-primary dark:text-accent mb-2">Maquette 1</h2>
+                    <p class="font-bold text-dark dark:text-white">Le Portail d'Actualités</p>
+                    <p class="text-sm text-gray-500 mt-2">
+                        Une approche classique et dense, optimisée pour un flux d'informations continu.
+                    </p>
+                </div>
+            </a>
+            
+            <!-- Option 2: Maquette Moderne -->
+            <a href="prototype-mada-news-ambiance v2/index.html" class="maquette-choice group">
+                 <div class="border-2 border-gray-200 dark:border-gray-700 p-6 group-hover:border-primary dark:group-hover:border-accent transition-all duration-300">
+                    <h2 class="font-title text-2xl uppercase text-primary dark:text-accent mb-2">Maquette 2</h2>
+                    <p class="font-bold text-dark dark:text-white">Le Magazine Immersif</p>
+                    <p class="text-sm text-gray-500 mt-2">
+                        Une expérience visuelle moderne, épurée et centrée sur le confort de lecture.
+                    </p>
+                </div>
+            </a>
+        </div>
+
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const popup = document.getElementById('maquette-selector-popup');
+
+    // Fermer le pop-up avec la touche Echap
+    window.addEventListener('keydown', function(event) {
+        if (event.key === 'Escape' && popup) {
+            popup.style.display = 'none';
+        }
+    });
+
+    // ... (le reste de votre code JS peut rester) ...
+});
+</script>
+
+    
+</body>
+</html>

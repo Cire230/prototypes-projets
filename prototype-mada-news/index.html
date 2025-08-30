@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MADA i24H NEWS - Prototype Final</title>
+    
+    <!-- Polices Google Fonts (nous les garderons pour Tailwind) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- Fichier CSS actuel (sera remplacé par Tailwind plus tard) -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- ... vos autres liens (fonts, font-awesome) ... -->
+    <script src="https://cdn.tailwindcss.com"></script> <!-- AJOUTER CETTE LIGNE -->
+
+    <!-- Icônes Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+</head>
+<body class="bg-light font-body text-dark border-t-4 border-indigo-800">
+
+    <!-- ==================== EN-TÊTE FINAL ==================== -->
+    <header class="bg-primary text-white relative py-4">
+        <div class="container flex justify-between items-center">
+
+            <!-- Burger Menu (Visible sur mobile) -->
+            <button class="lg:hidden z-50 mobile-nav-toggle" aria-controls="main-nav" aria-expanded="false">
+                <span class="sr-only">Menu</span>
+                <span class="burger-icon"></span> <!-- Le style de l'animation restera en CSS pour le moment -->
+            </button>
+
+            <!-- Logo -->
+            <a href="index.html" class="absolute z-20 left-1/2 -translate-x-1/2 lg:left-5 lg:translate-x-0 top-2">
+                <img src="logo.png" alt="MADA i24H NEWS Logo" class="h-24">
+            </a>
+
+            <!-- Navigation Principale (Visible sur desktop) -->
+            <nav class="main-nav hidden lg:flex items-center pl-64">
+                <ul class="flex items-center gap-8">
+                    <li><a href="index.html" class="font-bold hover:text-accent transition-colors">Accueil</a></li>
+                    <li><a href="#" class="font-bold hover:text-accent transition-colors">Sociale</a></li>
+                    <li><a href="#" class="font-bold hover:text-accent transition-colors">Politique</a></li>
+                    <li><a href="#" class="font-bold hover:text-accent transition-colors">Environnement</a></li>
+                    <li><a href="#" class="font-bold hover:text-accent transition-colors">Santé</a></li>
+                    <li><a href="#" class="font-bold hover:text-accent transition-colors">Économie</a></li>
+                    <li><a href="#" class="font-bold hover:text-accent transition-colors">Culturel</a></li>
+                </ul>
+            </nav>
+
+            <!-- Recherche -->
+            <div class="header-search hidden lg:flex items-center">
+                <form action="#" class="search-form">
+                    <input type="search" class="search-input" placeholder="Rechercher...">
+                </form>
+                <i class="fas fa-search search-toggle-icon text-2xl cursor-pointer"></i>
+            </div>
+            
+             <!-- Icône de recherche pour mobile -->
+            <div class="lg:hidden z-20">
+                 <i class="fas fa-search text-2xl cursor-pointer"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- ==================== CARROUSEL "A LA UNE" AVEC TAILWIND CSS ==================== -->
+    <section id="hero-carousel" class="relative w-full h-[550px] overflow-hidden">
+        <!-- Conteneur des diapositives -->
+        <div class="carousel-slides">
+            <!-- Diapositive 1 -->
+            <div class="carousel-slide absolute inset-0 opacity-100 transition-opacity duration-1000 ease-in-out">
+                <img src="https://cdn.pixabay.com/photo/2021/08/13/13/43/kids-6543143_1280.jpg" alt="Article à la une 1" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+                <div class="absolute inset-0 container flex flex-col justify-end text-white p-8 md:p-12">
+                    <div>
+                        <span class="category-tag bg-accent text-white font-title text-sm uppercase py-1 px-3 inline-block mb-3">Politique</span>
+                        <h1 class="font-title text-3xl md:text-5xl font-bold leading-tight mb-3"><a href="article.html" class="text-white">Titre percutant de l'article principal à la une</a></h1>
+                        <p class="hidden md:block text-white/90">Un court extrait de l'article pour susciter l'intérêt du lecteur et l'inciter à cliquer pour en savoir plus.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Diapositive 2 -->
+            <div class="carousel-slide absolute inset-0 opacity-0 transition-opacity duration-1000 ease-in-out">
+                <img src="https://cdn.pixabay.com/photo/2012/12/10/12/38/president-69213_1280.jpg" alt="Article à la une 2" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+                <div class="absolute inset-0 container flex flex-col justify-end text-white p-8 md:p-12">
+                    <div>
+                        <span class="category-tag bg-accent text-white font-title text-sm uppercase py-1 px-3 inline-block mb-3">Économie</span>
+                        <h1 class="font-title text-3xl md:text-5xl font-bold leading-tight mb-3"><a href="article.html" class="text-white">Un autre titre important sur les marchés financiers</a></h1>
+                        <p class="hidden md:block text-white/90">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Diapositive 3 -->
+            <div class="carousel-slide absolute inset-0 opacity-0 transition-opacity duration-1000 ease-in-out">
+                <img src="https://cdn.pixabay.com/photo/2018/05/09/19/31/bavarian-forest-3385966_1280.jpg" alt="Article à la une 3" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+                <div class="absolute inset-0 container flex flex-col justify-end text-white p-8 md:p-12">
+                    <div>
+                        <span class="category-tag bg-accent text-white font-title text-sm uppercase py-1 px-3 inline-block mb-3">Environnement</span>
+                        <h1 class="font-title text-3xl md:text-5xl font-bold leading-tight mb-3"><a href="article.html" class="text-white">Découverte majeure pour la préservation des océans</a></h1>
+                        <p class="hidden md:block text-white/90">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contrôles de Navigation -->
+        <button id="prevBtn" class="absolute left-4 top-1/2 -translate-y-1/2 bg-white/20 text-white p-3 rounded-full hover:bg-white/40 transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" /></svg>
+        </button>
+        <button id="nextBtn" class="absolute right-4 top-1/2 -translate-y-1/2 bg-white/20 text-white p-3 rounded-full hover:bg-white/40 transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+        </button>
+    </section>
+
+    <main class="pt-4">
+        <!-- ==================== INFO BAR & GRILLE "A LA UNE" AVEC TAILWIND CSS ==================== -->
+        <div class="info-bar-container bg-white shadow-sm py-2">
+            <div class="container">
+                <!-- Barre Flash News -->
+                <div class="flash-news-ticker flex items-center bg-light p-2 overflow-hidden">
+                    <span class="ticker-label bg-accent text-white font-title text-sm uppercase py-1 px-4 whitespace-nowrap">
+                        Flash News <i class="fas fa-bolt ml-1"></i>
+                    </span>
+                    <div class="ticker-content flex-grow overflow-hidden">
+                        <ul class="flex animate-ticker">
+                            <li class="flex items-center whitespace-nowrap px-5"><a href="#" class="hover:text-primary">Un engagement éco-responsable pour le marathon international</a><span class="text-accent ml-5">◆</span></li>
+                            <li class="flex items-center whitespace-nowrap px-5"><a href="#" class="hover:text-primary">Nosy Be : Deux hôtels en activité illégale, le Ministère reste silencieux</a><span class="text-accent ml-5">◆</span></li>
+                            <li class="flex items-center whitespace-nowrap px-5"><a href="#" class="hover:text-primary">Nouvelle aide économique annoncée par le gouvernement</a><span class="text-accent ml-5">◆</span></li>
+                            <!-- Dupliquer les li pour un défilement infini fluide -->
+                            <li class="flex items-center whitespace-nowrap px-5"><a href="#" class="hover:text-primary">Un engagement éco-responsable pour le marathon international</a><span class="text-accent ml-5">◆</span></li>
+                            <li class="flex items-center whitespace-nowrap px-5"><a href="#" class="hover:text-primary">Nosy Be : Deux hôtels en activité illégale, le Ministère reste silencieux</a><span class="text-accent ml-5">◆</span></li>
+                            <li class="flex items-center whitespace-nowrap px-5"><a href="#" class="hover:text-primary">Nouvelle aide économique annoncée par le gouvernement</a><span class="text-accent ml-5">◆</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container mt-8">
+            <div class="homepage-grid grid grid-cols-1 lg:grid-cols-3 gap-8">
+
+                <!-- Colonne de Gauche : Contenu principal "A la une" -->
+                <div class="main-content-column lg:col-span-2">
+                    <div class="section-title-bar flex justify-between items-center border-b-2 border-accent pb-2 mb-4">
+                        <h2 class="section-main-title font-title text-2xl uppercase flex items-center gap-3">
+                            <span class="title-square bg-accent w-4 h-4"></span> A la une
+                        </h2>
+                    </div>
+                    <!-- ==================== ARTICLE "A LA UNE" AMÉLIORÉ AVEC TEXTE SUR L'IMAGE ==================== -->
+                    <article class="hero-article-card relative overflow-hidden shadow-lg group">
+                        <!-- Image de fond -->
+                        <img src="https://cdn.pixabay.com/photo/2016/02/01/00/56/news-1172463_1280.jpg" alt="Article à la une" class="w-full h-[500px] object-cover transform group-hover:scale-105 transition-transform duration-300">
+
+                        <!-- Dégradé pour le contraste -->
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+
+                        <!-- Contenu textuel superposé -->
+                        <div class="hero-article-content absolute inset-0 p-6 md:p-8 flex flex-col justify-end text-white">
+                            <div>
+                                <span class="card-category bg-accent text-white font-bold text-xs uppercase py-1 px-3 mb-3 inline-block">Actualités</span>
+                                <h2 class="font-title text-3xl lg:text-4xl leading-tight mb-3">
+                                    <a href="article.html" class="text-white hover:text-white/80 transition-colors">Le Marathon International de Tana 2025 : un engagement éco-responsable</a>
+                                </h2>
+                                <span class="article-meta text-white/80 text-sm mb-4 block">par <strong>admin</strong> | 29 août 2025</span>
+                                <p class="article-excerpt hidden md:block text-white/90">
+                                    Lors d'une conférence de presse tenue, le 28 août 2025, au World Trade Center (WTC) à Ankorondrano, les organisateurs ont...
+                                </p>
+                            </div>
+                        </div>
+                    </article>
+                </div> <!-- Fin de la colonne de gauche -->
+
+                <!-- Colonne de Droite : Sidebar avec la liste d'articles -->
+                <div class="sidebar-column custom-sidebar">
+                    <div class="section-title-bar flex justify-between items-center border-b-2 border-accent pb-2 mb-4 bg-white p-3">
+                        <h2 class="section-main-title font-title text-xl uppercase">Articles Mada i24h News</h2>
+                        <div class="section-nav-links">
+                            <a href="#" class="text-gray-600 font-bold text-sm hover:text-accent">Autres Articles ></a>
+                        </div>
+                    </div>
+                    <div class="widget-article-list bg-white p-4 shadow-lg space-y-4">
+                        <!-- Article 1 -->
+                        <a href="article.html" class="widget-article-item flex items-center gap-4 pb-4 border-b border-gray-100 last:border-b-0 last:pb-0">
+                            <img src="https://cdn.pixabay.com/photo/2022/03/21/19/05/ukraine-7083774_1280.jpg" alt="Miniature" class="w-20 h-16 object-cover flex-shrink-0">
+                            <div class="widget-article-info">
+                                <p class="font-bold leading-tight hover:text-accent transition-colors">SADC : Cyril Ramaphosa salue le leadership...</p>
+                                <span class="widget-article-date text-gray-500 text-xs mt-1 block">21 août 2025</span>
+                            </div>
+                        </a>
+                        <!-- Article 2 -->
+                        <a href="article.html" class="widget-article-item flex items-center gap-4 pb-4 border-b border-gray-100 last:border-b-0 last:pb-0">
+                            <img src="https://cdn.pixabay.com/photo/2022/02/26/09/02/demonstration-7035471_1280.jpg" alt="Miniature" class="w-20 h-16 object-cover flex-shrink-0">
+                            <div class="widget-article-info">
+                                <p class="font-bold leading-tight hover:text-accent transition-colors">45ᵉ Sommet de la SADC : Appel à la paix...</p>
+                                <span class="widget-article-date text-gray-500 text-xs mt-1 block">20 août 2025</span>
+                            </div>
+                        </a>
+                        <!-- Article 3 -->
+                        <a href="article.html" class="widget-article-item flex items-center gap-4 pb-4 border-b border-gray-100 last:border-b-0 last:pb-0">
+                            <img src="https://cdn.pixabay.com/photo/2017/09/02/16/39/thailand-2707808_1280.jpg" alt="Miniature" class="w-20 h-16 object-cover flex-shrink-0">
+                            <div class="widget-article-info">
+                                <p class="font-bold leading-tight hover:text-accent transition-colors">Le Marathon International de Tana 2025...</p>
+                                <span class="widget-article-date text-gray-500 text-xs mt-1 block">19 août 2025</span>
+                            </div>
+                        </a>
+                        <!-- Article 4 -->
+                        <a href="article.html" class="widget-article-item flex items-center gap-4">
+                            <img src="https://cdn.pixabay.com/photo/2022/03/21/19/05/ukraine-7083774_1280.jpg" alt="Miniature" class="w-20 h-16 object-cover flex-shrink-0">
+                            <div class="widget-article-info">
+                                <p class="font-bold leading-tight hover:text-accent transition-colors">Nosy Sakatia - Nosy Be : Deux hôtels...</p>
+                                <span class="widget-article-date text-gray-500 text-xs mt-1 block">18 août 2025</span>
+                            </div>
+                        </a>
+                    </div>
+                </div> <!-- Fin de la colonne de droite -->
+            </div>
+        </div>
+
+        <!-- ==================== NOUVELLE SECTION PRINCIPALE (GRILLE + SIDEBAR) ==================== -->
+        <div class="container">
+            <div class="main-layout">
+
+                <!-- Colonne de Gauche : Contenu Principal -->
+                <div class="main-content">
+                    <section class="recent-articles">
+
+                        <div class="section-title-bar flex justify-between items-center border-b-2 border-accent pb-2 mb-4">
+                                <h2 class="section-main-title font-title text-2xl uppercase flex items-center gap-3">
+                                    <span class="title-square bg-accent w-4 h-4"></span> En première page
+                                </h2>
+                            </div>
+
+                        <div class="articles-grid-2-cols">
+                            <!-- Article 1 -->
+                            <article class="article-card">
+                                <div class="card-image-container">
+                                    <img src="https://cdn.pixabay.com/photo/2022/03/21/19/05/ukraine-7083774_1280.jpg" alt="Article Politique">
+                                    <a href="article.html" class="card-overlay"><i class="fas fa-eye"></i><span>Lire l'article</span></a>
+                                </div>
+                                <div class="card-content">
+                                    <span class="card-category">Actualités</span>
+                                    <h3><a href="article.html">SADC : Cyril Ramaphosa salue le leadership du Président</a></h3>
+                                    <span class="article-meta"><span class="font-bold text-xs">admin | </span>13 Octobre 2024</span>
+                                    <p class="article-excerpt">Le président sud-africain Cyril Ramaphosa a été désigné à la tête de la Communauté de Développement de l'Afrique Australe...</p>
+                                </div>
+                            </article>
+                            <!-- Article 2 -->
+                            <article class="article-card">
+                                <div class="card-image-container">
+                                    <img src="https://cdn.pixabay.com/photo/2022/02/26/09/02/demonstration-7035471_1280.jpg" alt="Article Économie">
+                                    <a href="article.html" class="card-overlay"><i class="fas fa-eye"></i><span>Lire l'article</span></a>
+                                </div>
+                                <div class="card-content">
+                                    <span class="card-category">Actualités</span>
+                                    <h3><a href="article.html">45ᵉ Sommet de la SADC : Appel à la paix en RDC</a></h3>
+                                    <span class="article-meta"><span class="font-bold text-xs">admin | </span>18 Octobre 2024</span>
+                                    <p class="article-excerpt">Réunis dans la capitale malgache à l’occasion du 45ᵉ Sommet des Chefs d’État et de Gouvernement, les dirigeants de la Communauté...</p>
+                                </div>
+                            </article>
+                            <!-- Article 3 -->
+                            <article class="article-card">
+                                <div class="card-image-container">
+                                    <img src="https://cdn.pixabay.com/photo/2017/09/02/16/39/thailand-2707808_1280.jpg" alt="Article Santé">
+                                    <a href="article.html" class="card-overlay"><i class="fas fa-eye"></i><span>Lire l'article</span></a>
+                                </div>
+                                <div class="card-content">
+                                    <span class="card-category">Actualités</span>
+                                    <h3><a href="article.html">Nouvelle campagne de vaccination lancée à l'échelle nationale</a></h3>
+                                    <span class="article-meta"><span class="font-bold text-xs">admin | </span>17 Octobre 2024</span>
+                                    <p class="article-excerpt">Face à la résurgence de certains virus, le ministère de la Santé publique a officiellement lancé une vaste campagne de vaccination...</p>
+                                </div>
+                            </article>
+                            <!-- Article 4 -->
+                            <article class="article-card">
+                                <div class="card-image-container">
+                                    <img src="https://cdn.pixabay.com/photo/2012/02/19/10/49/revolution-14913_1280.jpg" alt="Article Culturel">
+                                    <a href="article.html" class="card-overlay"><i class="fas fa-eye"></i><span>Lire l'article</span></a>
+                                </div>
+                                <div class="card-content">
+                                    <span class="card-category">Actualités</span>
+                                    <h3><a href="article.html">Le festival de musique traditionnelle bat son plein</a></h3>
+                                    <span class="article-meta"><span class="font-bold text-xs">admin | </span>16 Octobre 2024</span>
+                                    <p class="article-excerpt">Des milliers de spectateurs se sont réunis ce week-end pour célébrer la richesse du patrimoine musical local lors de la 10ᵉ édition du festival...</p>
+                                </div>
+                            </article>
+                        </div>
+
+                        <div class="load-more-container">
+                            <button class="load-more-btn">Voir plus d'articles anciens</button>
+                        </div>
+                    </section>
+                </div><!-- Fin de main-content -->
+
+                <!-- Colonne de Droite : Nouvelle Sidebar -->
+                <aside class="sidebar">
+                    <!-- Widget Logo & Social -->
+                    <div class="widget logo-widget">
+                        <img src="logo.jpg" alt="Logo MADA i24h NEWS">
+                        <div class="social-icons">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+
+                    <!-- Widget de Recherche -->
+                    <div class="widget search-widget">
+                        <h4>Rechercher</h4>
+                        <form action="#" class="sidebar-search-form">
+                            <input type="search" placeholder="Rechercher sur le site...">
+                            <button type="submit">OK</button>
+                        </form>
+                    </div>
+
+                    <!-- Widget de Filtrage -->
+                    <div class="widget filter-widget">
+                        <h4>Filtrer par catégorie</h4>
+                        <select name="category-filter">
+                            <option value="">Toutes les catégories</option>
+                            <option value="sociale">Actualité Sociale</option>
+                            <option value="politique">Actualité Politique</option>
+                            <option value="environnement">Actualité Environnemental</option>
+                            <option value="sante">Actualité de Santé</option>
+                            <option value="economie">Actualité Économique</option>
+                            <option value="culturel">Actualité Culturel</option>
+                        </select>
+                    </div>
+                    
+                    <!-- Widget bannière publicitaire -->
+                    <!-- <div class="widget banner-widget">
+                        <a href="#"><img src="https://cdn.pixabay.com/photo/2021/07/02/00/20/woman-6380562_1280.jpg" alt="Publicité"></a>
+                    </div> -->
+                </aside> <!-- Fin de sidebar -->
+            </div> <!-- Fin de main-layout -->
+        </div>
+
+        <!-- ==================== SECTION ACTUALITÉS 1 AVEC TAILWIND CSS ==================== -->
+        <div class="container mt-12">
+            <section class="category-section">
+                <div class="section-header flex justify-between items-center border-b-2 border-gray-300 pb-2 mb-6">
+                    <h2 class="font-title text-2xl uppercase">Actualité Sociale</h2>
+                    <a href="#" class="text-gray-600 font-bold text-sm hover:text-accent">Voir tout &rarr;</a>
+                </div>
+                <div class="articles-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Article 1 -->
+                    <article class="article-card bg-white shadow-lg overflow-hidden flex flex-col group">
+                        <div class="card-image-container relative overflow-hidden">
+                            <img src="https://cdn.pixabay.com/photo/2022/03/08/15/29/ukraine-7055973_1280.jpg" alt="Article" class="w-full h-48 object-cover transform group-hover:scale-105 transition-transform duration-300">
+                            <a href="article.html" class="card-overlay absolute inset-0 bg-primary/80 flex flex-col justify-center items-center text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                <i class="fas fa-eye text-4xl mb-2"></i>
+                                <span class="font-title uppercase">Lire l'article</span>
+                            </a>
+                        </div>
+                        <div class="card-content p-5 flex flex-col flex-grow">
+                            <span class="card-category text-accent font-bold text-xs uppercase mb-2">Actualités</span>
+                            <h3 class="text-lg font-bold flex-grow"><a href="article.html" class="hover:text-accent transition-colors">Titre de l'article sur un sujet social important aliquid sint atque</a></h3>
+                            <span class="article-meta text-gray-500 text-sm mb-2">
+                                <span class="font-bold text-xs">admin</span> | 15 Octobre 2024
+                            </span>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione illum, cupiditate praesentium aliquid sint atque odio temporibus provident li...</p>
+                        </div>
+                    </article>
+                    <!-- Article 2 -->
+                    <article class="article-card bg-white shadow-lg overflow-hidden flex flex-col group">
+                        <div class="card-image-container relative overflow-hidden">
+                            <img src="https://cdn.pixabay.com/photo/2022/03/21/19/05/ukraine-7083772_1280.jpg" alt="Article" class="w-full h-48 object-cover transform group-hover:scale-105 transition-transform duration-300">
+                            <a href="article.html" class="card-overlay absolute inset-0 bg-primary/80 flex flex-col justify-center items-center text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                <i class="fas fa-eye text-4xl mb-2"></i>
+                                <span class="font-title uppercase">Lire l'article</span>
+                            </a>
+                        </div>
+                        <div class="card-content p-5 flex flex-col flex-grow">
+                            <span class="card-category text-accent font-bold text-xs uppercase mb-2">Actualités</span>
+                            <h3 class="text-lg font-bold flex-grow"><a href="article.html" class="hover:text-accent transition-colors">Analyse d'une nouvelle réforme gouvernementale</a></h3>
+                            <span class="article-meta text-gray-500 text-sm mb-2">
+                                <span class="font-bold text-xs">admin</span> | 14 Octobre 2024
+                            </span>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione illum, cupiditate praesentium aliquid sint atque odio temporibus provident li...</p>
+                        </div>
+                    </article>
+                    <!-- Article 3 -->
+                    <article class="article-card bg-white shadow-lg overflow-hidden flex flex-col group">
+                        <div class="card-image-container relative overflow-hidden">
+                            <img src="https://cdn.pixabay.com/photo/2022/03/21/19/05/ukraine-7083769_1280.jpg" alt="Article" class="w-full h-48 object-cover transform group-hover:scale-105 transition-transform duration-300">
+                            <a href="article.html" class="card-overlay absolute inset-0 bg-primary/80 flex flex-col justify-center items-center text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                <i class="fas fa-eye text-4xl mb-2"></i>
+                                <span class="font-title uppercase">Lire l'article</span>
+                            </a>
+                        </div>
+                        <div class="card-content p-5 flex flex-col flex-grow">
+                            <span class="card-category text-accent font-bold text-xs uppercase mb-2">Actualités</span>
+                            <h3 class="text-lg font-bold flex-grow"><a href="article.html" class="hover:text-accent transition-colors">Portrait d'un acteur du changement dans la communauté</a></h3>
+                            <span class="article-meta text-gray-500 text-sm mb-2">
+                                <span class="font-bold text-xs">admin</span> | 12 Octobre 2024
+                            </span>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione illum, cupiditate praesentium aliquid sint atque odio temporibus provident li...</p>
+                        </div>
+                    </article>
+                </div>
+            </section>
+        </div>
+
+        <!-- ==================== SECTION ACTUALITÉS 2 AVEC TAILWIND CSS ==================== -->
+        <div class="container mt-12">
+            <section class="category-section">
+                <div class="section-header flex justify-between items-center border-b-2 border-gray-300 pb-2 mb-6">
+                    <h2 class="font-title text-2xl uppercase">Actualité Politique</h2>
+                    <a href="#" class="text-gray-600 font-bold text-sm hover:text-accent">Voir tout &rarr;</a>
+                </div>
+                <div class="articles-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Article 1 -->
+                    <article class="article-card bg-white shadow-lg overflow-hidden flex flex-col group">
+                        <div class="card-image-container relative overflow-hidden">
+                            <img src="https://cdn.pixabay.com/photo/2017/05/22/07/20/press-2333329_1280.jpg" alt="Article" class="w-full h-48 object-cover transform group-hover:scale-105 transition-transform duration-300">
+                            <a href="article.html" class="card-overlay absolute inset-0 bg-primary/80 flex flex-col justify-center items-center text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                <i class="fas fa-eye text-4xl mb-2"></i>
+                                <span class="font-title uppercase">Lire l'article</span>
+                            </a>
+                        </div>
+                        <div class="card-content p-5 flex flex-col flex-grow">
+                            <span class="card-category text-accent font-bold text-xs uppercase mb-2">Actualités</span>
+                            <h3 class="text-lg font-bold flex-grow"><a href="article.html" class="hover:text-accent transition-colors">Titre de l'article sur un sujet social important aliquid sint atque</a></h3>
+                            <span class="article-meta text-gray-500 text-sm mb-2">
+                                <span class="font-bold text-xs">admin</span> | 15 Octobre 2024
+                            </span>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione illum, cupiditate praesentium aliquid sint atque odio temporibus provident li...</p>
+                        </div>
+                    </article>
+                    <!-- Article 2 -->
+                    <article class="article-card bg-white shadow-lg overflow-hidden flex flex-col group">
+                        <div class="card-image-container relative overflow-hidden">
+                            <img src="https://cdn.pixabay.com/photo/2021/12/05/12/08/journalist-6847555_1280.jpg" alt="Article" class="w-full h-48 object-cover transform group-hover:scale-105 transition-transform duration-300">
+                            <a href="article.html" class="card-overlay absolute inset-0 bg-primary/80 flex flex-col justify-center items-center text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                <i class="fas fa-eye text-4xl mb-2"></i>
+                                <span class="font-title uppercase">Lire l'article</span>
+                            </a>
+                        </div>
+                        <div class="card-content p-5 flex flex-col flex-grow">
+                            <span class="card-category text-accent font-bold text-xs uppercase mb-2">Actualités</span>
+                            <h3 class="text-lg font-bold flex-grow"><a href="article.html" class="hover:text-accent transition-colors">Analyse d'une nouvelle réforme gouvernementale</a></h3>
+                            <span class="article-meta text-gray-500 text-sm mb-2">
+                                <span class="font-bold text-xs">admin</span> | 14 Octobre 2024
+                            </span>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione illum, cupiditate praesentium aliquid sint atque odio temporibus provident li...</p>
+                        </div>
+                    </article>
+                    <!-- Article 3 -->
+                    <article class="article-card bg-white shadow-lg overflow-hidden flex flex-col group">
+                        <div class="card-image-container relative overflow-hidden">
+                            <img src="https://cdn.pixabay.com/photo/2020/03/31/11/06/journalist-4987228_1280.jpg" alt="Article" class="w-full h-48 object-cover transform group-hover:scale-105 transition-transform duration-300">
+                            <a href="article.html" class="card-overlay absolute inset-0 bg-primary/80 flex flex-col justify-center items-center text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                <i class="fas fa-eye text-4xl mb-2"></i>
+                                <span class="font-title uppercase">Lire l'article</span>
+                            </a>
+                        </div>
+                        <div class="card-content p-5 flex flex-col flex-grow">
+                            <span class="card-category text-accent font-bold text-xs uppercase mb-2">Actualités</span>
+                            <h3 class="text-lg font-bold flex-grow"><a href="article.html" class="hover:text-accent transition-colors">Portrait d'un acteur du changement dans la communauté</a></h3>
+                            <span class="article-meta text-gray-500 text-sm mb-2">
+                                <span class="font-bold text-xs">admin</span> | 12 Octobre 2024
+                            </span>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione illum, cupiditate praesentium aliquid sint atque odio temporibus provident li...</p>
+                        </div>
+                    </article>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- ==================== PIED DE PAGE FINAL AVEC TAILWIND CSS ==================== -->
+    <footer class="main-footer bg-primary text-white/80 mt-16 pt-12">
+        <div class="container footer-grid grid grid-cols-1 md:grid-cols-3 lg:grid-cols-[2fr_1fr_1.5fr] gap-8 pb-10">
+            <!-- Colonne 1: Logo & Social -->
+            <div class="footer-col text-center md:text-left">
+                <img src="logo.png" alt="MADA i24H NEWS Logo" class="logo-footer h-20 mb-5 mx-auto md:mx-0">
+                <p class="text-sm leading-relaxed">MADA i24H NEWS, votre source d'information fiable et en continu. Suivez-nous pour ne rien manquer de l'actualité.</p>
+                <div class="social-icons mt-5 flex justify-center md:justify-start gap-4">
+                    <a href="#" class="text-xl hover:text-white transition-colors"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="text-xl hover:text-white transition-colors"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="text-xl hover:text-white transition-colors"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <!-- Colonne 2: Liens -->
+            <div class="footer-col text-center md:text-left">
+                <h3 class="font-title text-white text-xl uppercase mb-5">Explorer</h3>
+                <ul class="space-y-2">
+                    <li><a href="#" class="hover:text-white transition-colors">À Propos</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors">Contact</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors">Politique</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors">Économie</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors">Mentions Légales</a></li>
+                </ul>
+            </div>
+            <!-- Colonne 3: Newsletter -->
+            <div class="footer-col text-center md:text-left">
+                <h3 class="font-title text-white text-xl uppercase mb-5">Newsletter</h3>
+                <p class="mb-4 text-sm">Recevez l'essentiel de l'actu chaque semaine.</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Votre adresse email" class="w-full p-3 border-none text-dark mb-2 focus:outline-none focus:ring-2 focus:ring-accent">
+                    <button type="submit" class="w-full p-3 border-none bg-accent text-white font-bold uppercase hover:bg-red-700 transition-colors">S'inscrire</button>
+                </form>
+            </div>
+        </div>
+        <div class="footer-bottom bg-black/20 text-center py-4">
+            <p class="text-sm">&copy; 2024 - MADA i24H NEWS - Tous droits réservés</p>
+        </div>
+    </footer>
+
+    <!-- Lien vers le fichier JavaScript -->
+    <script src="main.js"></script>
+
+    <!-- Dans index.html, juste après le script cdn.tailwindcss.com -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary': '#0057E0', // Notre bleu
+                        'accent': '#D40000',  // Notre rouge
+                        'dark': '#1A1A1A',     // Notre gris foncé
+                        'light': '#F5F5F7',   // Notre gris clair
+                    },
+                    fontFamily: {
+                        'title': ['Oswald', 'sans-serif'], // Notre police de titre
+                        'body': ['Roboto', 'sans-serif'],   // Notre police de corps de texte
+                    }
+                },
+                // AJOUTER CES DEUX SECTIONS
+                keyframes: {
+                    'ticker-scroll': {
+                        '0%': { transform: 'translateX(0)' },
+                        '100%': { transform: 'translateX(-50%)' },
+                    }
+                },
+                animation: {
+                    'ticker': 'ticker-scroll 40s linear infinite',
+                }
+                },
+                container: {
+                    center: true, // Pour centrer le container
+                    padding: '1rem', // Padding par défaut sur mobile
+                    screens: {
+                        lg: '1200px', // Notre max-width
+                    },
+                },
+            }
+    </script>
+</body>
+</html>

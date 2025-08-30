@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="fr" class="light"> <!-- La classe "light" sera gérée par JS pour le mode sombre -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MADA i24H NEWS - Portail Éditorial</title>
+
+    <!-- Polices Google Fonts (nous les garderons pour Tailwind) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- Fichier CSS actuel (sera remplacé par Tailwind plus tard) -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- ... vos autres liens (fonts, font-awesome) ... -->
+    <script src="https://cdn.tailwindcss.com"></script> <!-- AJOUTER CETTE LIGNE -->
+
+    <!-- Icônes Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+</head>
+<body class="bg-white dark:bg-gray-900 transition-colors duration-500">
+
+    <!-- ==================== EN-TÊTE FLOTTANT AVEC TAILWIND CSS ==================== -->
+    <header id="main-header" class="fixed top-0 left-0 right-0 z-50 text-white transition-all duration-300 ease-in-out">
+        <div class="container mx-auto flex justify-between items-center p-4">
+            <!-- Côté Gauche : Date -->
+            <div id="current-date" class="hidden md:block text-sm font-semibold uppercase tracking-wider">
+                <!-- La date sera injectée ici par JS -->
+            </div>
+
+            <!-- Centre : Logo -->
+            <div class="absolute left-1/2 -translate-x-1/2 top-1">
+                <a href="index.html">
+                    <img src="logo.png" alt="MADA i24H NEWS Logo" id="header-logo" class="h-16 lg:h-20 transition-all duration-300">
+                </a>
+            </div>
+
+            <!-- Côté Droit : Actions & Mode Sombre -->
+            <div class="flex items-center gap-4 md:gap-6">
+                <button id="search-toggle" class="text-xl hover:text-accent transition-colors"><i class="fas fa-search"></i></button>
+                <button id="filter-toggle" class="text-xl hover:text-accent transition-colors"><i class="fas fa-filter"></i></button>
+                <!-- <button id="theme-toggle" class="text-xl hover:text-accent transition-colors"> -->
+                    <!-- <i class="fas fa-moon" id="theme-icon"></i> -->
+                <!-- </button> -->
+            </div>
+        </div>
+
+        <!-- Panneau de Recherche (caché par défaut) -->
+        <div id="search-panel" class="hidden bg-white/95 dark:bg-black/95 backdrop-blur-md p-4 shadow-lg">
+            <div class="container mx-auto">
+                <input type="search" placeholder="Rechercher un article..." class="w-full bg-transparent border-b-2 border-dark dark:border-white p-2 text-dark dark:text-white focus:outline-none placeholder:text-gray-500">
+            </div>
+        </div>
+        <!-- Panneau de Filtres (caché par défaut) -->
+        <div id="filter-panel" class="hidden bg-white/95 dark:bg-black/95 backdrop-blur-md p-6 shadow-lg">
+            <div class="container mx-auto grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4 text-center">
+                <a href="#" class="font-semibold uppercase text-dark dark:text-white hover:text-accent transition-colors">Politique</a>
+                <a href="#" class="font-semibold uppercase text-dark dark:text-white hover:text-accent transition-colors">Économie</a>
+                <a href="#" class="font-semibold uppercase text-dark dark:text-white hover:text-accent transition-colors">Sociale</a>
+                <a href="#" class="font-semibold uppercase text-dark dark:text-white hover:text-accent transition-colors">Santé</a>
+                <a href="#" class="font-semibold uppercase text-dark dark:text-white hover:text-accent transition-colors">Culturel</a>
+                <a href="#" class="font-semibold uppercase text-dark dark:text-white hover:text-accent transition-colors">Environnement</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- ==================== SECTION HÉROS "À LA UNE" AVEC TAILWIND CSS ==================== -->
+        <section class="h-screen w-full relative flex items-end lg:items-center">
+            <!-- Image de fond -->
+            <img src="https://cdn.pixabay.com/photo/2012/12/10/12/38/president-69213_1280.jpg" alt="Article principal" class="absolute inset-0 w-full h-full object-cover">
+            
+            <!-- Dégradé de contraste -->
+            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-black/20"></div>
+
+            <!-- Contenu textuel -->
+            <div class="relative z-10 text-white p-6 md:p-8 lg:p-12 w-full lg:w-3/4">
+                
+                <!-- STYLE 1 : Le Négatif / Bannière Pliée -->
+                <div class="mb-4">
+                    <span class="category-banner bg-accent text-white font-title uppercase tracking-widest text-sm py-2 px-4 relative">
+                        Politique
+                    </span>
+                </div>
+
+                <!-- STYLE 2 : Le Classique Surligné -->
+                <h1 class="font-serif text-4xl md:text-6xl lg:text-7xl font-bold leading-tight" style="text-shadow: 2px 2px 8px rgba(0,0,0,0.7);">
+                    Titre Principal <span class="highlight">Extrêmement</span> Percutant
+                </h1>
+                
+                <!-- STYLE 3 : Le Minimaliste avec Trait -->
+                <p class="mt-6 max-w-2xl text-lg text-white/90 relative pl-6">
+                    <span class="absolute left-0 top-2 h-full w-1 bg-accent"></span>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus laudantium ipsam voluptatum eaque libero doloribus dolorem commodi in iste odit provident, laborum nisi repudiandae perferendis sequi, distinctio sed aliquam consequatur.
+                </p>
+            </div>
+            
+            <!-- Indicateur de scroll -->
+            <div class="absolute bottom-10 left-1/2 -translate-x-1/2 text-white animate-bounce opacity-70">
+                <i class="fas fa-chevron-down text-2xl"></i>
+            </div>
+        </section>
+
+        <!-- ==================== SECTION STYLE "JOURNAL PAPIER" AVEC TAILWIND CSS ==================== -->
+        <div class="container mx-auto mt-12 md:mt-16 lg:mt-24 p-8">
+            
+            <!-- Grand Titre de la Une -->
+            <div class="text-center mb-8">
+                <h2 class="font-title text-5xl md:text-7xl font-bold uppercase text-dark dark:text-white">Amazing Headline Here!</h2>
+            </div>
+
+            <!-- Contenu Principal en Colonnes -->
+            <div class="newspaper-layout">
+                
+                <!-- Colonne 1 -->
+                <div class="newspaper-column">
+                    <p class="mb-4">
+                        <strong class="font-bold">In libris graecis appetere mea.</strong> At vim odio lorem omnes, pri id iuvaret partiendo. Vivendo menandri et sed. At vim odio lorem omnes, in libris graecis appetere mea. TDN PHOTO
+                    </p>
+                    <h3 class="font-serif text-2xl font-bold text-dark dark:text-white mb-4">
+                        This is a wonderful opportunity to grow your skills!
+                    </h3>
+                    <p class="mb-4">
+                        <span class="font-bold text-sm uppercase tracking-wider text-gray-500">Shelly Simons</span><br>
+                        <span class="text-sm uppercase tracking-wider text-gray-500">Reporter</span>
+                    </p>
+                    <p>
+                        Opera nullo ratio an libet de tangi sequi. Im me gurgitem quadrati connivet experiri de fatendum quatenus. Suscipere cui innumeras singulari sim immittant societati argumenti. Proponere conficiam evidentia purgantur to ne vereorque ac. Corpo to nihil nolim prima et et ad. Veri est supra imo omnem sic sitas. Formemus ubi utramque ira frigidis vim. Nia seiam his illas autem vox volui tasto. Acquiri sua equidem innatis respexi eos nec. Rei inferri quandiu...
+                    </p>
+                </div>
+
+                <!-- Colonne 2 -->
+                <div class="newspaper-column">
+                    <img src="https://cdn.pixabay.com/photo/2021/08/13/13/43/kids-6543143_1280.jpg" alt="Image d'illustration" class="w-full mb-4">
+                    <p class="mb-4">
+                        In libris graecis appetere mea. At vim odio lorem omnes, pri id iuvaret partiendo. Vivendo menandri et sed. Sit cu alia porro en vousson dans la fuisset. Ea pro natum invidunt repudiandae, et facilis vituperatoribus. Mei eu ubique altera senserit, consul eripuit accusata has ne. Ea pro natum invidunt repudiandae, his et facilis vituperatoribus. Sed ut nunc adipsicing leo porttitor pharetra. Nam dictum. Mauris eu eros. Aenean vulputate dolor quis felis. Etiam accumsan adipiscing massa. Nunc pharetra tortor a odio...
+                    </p>
+                </div>
+
+                <!-- Colonne 3 -->
+                <div class="newspaper-column">
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                        <br><br>
+                        <a href="article.html" class="font-bold text-gray-600 hover:text-accent">Lire la suite de l'article</a>
+                    </p>
+                </div>
+
+            </div>
+        </div>
+        
+        <!-- ==================== SECTIONS PAR CATÉGORIES (STYLE ÉDITORIAL MODERNE) ==================== -->
+        <div class="container mx-auto mt-12 md:mt-16 lg:mt-24 p-4 space-y-16 p-8">
+
+            <!-- SECTION 1 : ACTUALITÉ SOCIALE -->
+            <section>
+                <!-- Titre de la section : Style "Minimaliste avec Trait" -->
+                <div class="section-header flex justify-between items-center mb-6">
+                    <div class="section-tag-title">
+                        <h2 class="font-title text-xl md:text-2xl uppercase text-white">Actualité Sociale</h2>
+                    </div>
+                    <a href="#" class="hidden md:block text-sm font-bold uppercase tracking-wider text-gray-500 hover:text-accent dark:hover:text-accent transition-colors">
+                        Voir tout &rarr;
+                    </a>
+                </div>
+                <div class="h-1 bg-accent w-24 mb-8"></div> <!-- Le trait de style -->
+
+                <!-- Grille des articles -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Carte Article 1 -->
+                    <article class="flex flex-col group">
+                        <div class="relative overflow-hidden">
+                            <img src="https://cdn.pixabay.com/photo/2022/03/08/15/29/ukraine-7055973_1280.jpg" alt="Article Sociale" class="w-full object-cover transform group-hover:scale-105 transition-transform duration-300">
+                        </div>
+                        <div class="bg-white dark:bg-gray-800 p-5 flex flex-col flex-grow">
+                            <span class="font-bold text-red-600">Actualité</span>
+                            <h3 class="font-serif text-xl font-bold text-dark dark:text-white mb-3 flex-grow">
+                                <a href="article.html" class="hover:text-accent dark:hover:text-accent transition-colors">
+                                    Titre d'un article sur un sujet social important
+                                </a>
+                            </h3>
+                            <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">
+                                Un court extrait de l'article qui résume le point principal de la discussion...
+                            </p>
+                            <span class="text-xs text-gray-400 dark:text-gray-500 uppercase">15 Octobre 2024</span>
+                        </div>
+                    </article>
+                    
+                    <!-- Carte Article 2 -->
+                    <article class="flex flex-col group">
+                        <div class="relative overflow-hidden">
+                            <img src="https://cdn.pixabay.com/photo/2022/03/21/19/05/ukraine-7083772_1280.jpg" alt="Article Sociale" class="w-full object-cover transform group-hover:scale-105 transition-transform duration-300">
+                        </div>
+                        <div class="bg-white dark:bg-gray-800 p-5 flex flex-col flex-grow">
+                            <span class="font-bold text-red-600">Actualité</span>
+                            <h3 class="font-serif text-xl font-bold text-dark dark:text-white mb-3 flex-grow">
+                                <a href="article.html" class="hover:text-accent dark:hover:text-accent transition-colors">
+                                    Analyse d'une nouvelle réforme gouvernementale
+                                </a>
+                            </h3>
+                            <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">
+                                Les implications de cette réforme sont analysées en profondeur par nos experts...
+                            </p>
+                            <span class="text-xs text-gray-400 dark:text-gray-500 uppercase">14 Octobre 2024</span>
+                        </div>
+                    </article>
+
+                    <!-- Carte Article 3 -->
+                    <article class="flex flex-col group">
+                        <div class="relative overflow-hidden">
+                            <img src="https://cdn.pixabay.com/photo/2022/03/21/19/05/ukraine-7083769_1280.jpg" alt="Article Sociale" class="w-full object-cover transform group-hover:scale-105 transition-transform duration-300">
+                        </div>
+                        <div class="bg-white dark:bg-gray-800 p-5 flex flex-col flex-grow">
+                            <span class="font-bold text-red-600">Actualité</span>
+                            <h3 class="font-serif text-xl font-bold text-dark dark:text-white mb-3 flex-grow">
+                                <a href="article.html" class="hover:text-accent dark:hover:text-accent transition-colors">
+                                    Portrait d'un acteur du changement dans la communauté
+                                </a>
+                            </h3>
+                            <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">
+                                Découvrez l'histoire inspirante de cette personne qui a décidé de faire bouger les choses...
+                            </p>
+                            <span class="text-xs text-gray-400 dark:text-gray-500 uppercase">12 Octobre 2024</span>
+                        </div>
+                    </article>
+                </div>
+            </section>
+            
+            <!-- SECTION 2 : ACTUALITÉ POLITIQUE (structure identique) -->
+            <section>
+                <!-- Titre de la section -->
+                <div class="section-header flex justify-between items-center mb-6 p-8">
+                    <div class="section-tag-title">
+                        <h2 class="font-title text-xl md:text-2xl uppercase text-white">Actualité Politique</h2>
+                    </div>
+                    <a href="#" class="hidden md:block text-sm font-bold uppercase tracking-wider text-gray-500 hover:text-accent dark:hover:text-accent transition-colors">
+                        Voir tout &rarr;
+                    </a>
+                </div>
+                <div class="h-1 bg-accent w-24 mb-8"></div>
+                
+                <!-- Grille des articles -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Carte Article 1 -->
+                    <article class="flex flex-col group">
+                        <div class="relative overflow-hidden">
+                            <img src="https://cdn.pixabay.com/photo/2017/05/22/07/20/press-2333329_1280.jpg" alt="Article Sociale" class="w-full object-cover transform group-hover:scale-105 transition-transform duration-300">
+                        </div>
+                        <div class="bg-white dark:bg-gray-800 p-5 flex flex-col flex-grow">
+                            <span class="font-bold text-red-600">Actualité</span>
+                            <h3 class="font-serif text-xl font-bold text-dark dark:text-white mb-3 flex-grow">
+                                <a href="article.html" class="hover:text-accent dark:hover:text-accent transition-colors">
+                                    Portrait d'un acteur du changement dans la communauté
+                                </a>
+                            </h3>
+                            <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">
+                                Découvrez l'histoire inspirante de cette personne qui a décidé de faire bouger les choses...
+                            </p>
+                            <span class="text-xs text-gray-400 dark:text-gray-500 uppercase">12 Octobre 2024</span>
+                        </div>
+                    </article>
+                    <!-- Carte Article 2 -->
+                    <article class="flex flex-col group">
+                        <div class="relative overflow-hidden">
+                            <img src="https://cdn.pixabay.com/photo/2021/12/05/12/08/journalist-6847555_1280.jpg" alt="Article Sociale" class="w-full object-cover transform group-hover:scale-105 transition-transform duration-300">
+                        </div>
+                        <div class="bg-white dark:bg-gray-800 p-5 flex flex-col flex-grow">
+                            <span class="font-bold text-red-600">Actualité</span>
+                            <h3 class="font-serif text-xl font-bold text-dark dark:text-white mb-3 flex-grow">
+                                <a href="article.html" class="hover:text-accent dark:hover:text-accent transition-colors">
+                                    Portrait d'un acteur du changement dans la communauté
+                                </a>
+                            </h3>
+                            <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">
+                                Découvrez l'histoire inspirante de cette personne qui a décidé de faire bouger les choses...
+                            </p>
+                            <span class="text-xs text-gray-400 dark:text-gray-500 uppercase">13 Décembre 2024</span>
+                        </div>
+                    </article>
+                    <!-- Carte Article 3 -->
+                    <article class="flex flex-col group">
+                        <div class="relative overflow-hidden">
+                            <img src="https://cdn.pixabay.com/photo/2020/03/31/11/06/journalist-4987228_1280.jpg" alt="Article Sociale" class="w-full object-cover transform group-hover:scale-105 transition-transform duration-300">
+                        </div>
+                        <div class="bg-white dark:bg-gray-800 p-5 flex flex-col flex-grow">
+                            <span class="font-bold text-red-600">Actualité</span>
+                            <h3 class="font-serif text-xl font-bold text-dark dark:text-white mb-3 flex-grow">
+                                <a href="article.html" class="hover:text-accent dark:hover:text-accent transition-colors">
+                                    Portrait d'un acteur du changement dans la communauté
+                                </a>
+                            </h3>
+                            <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">
+                                Découvrez l'histoire inspirante de cette personne qui a décidé de faire bouger les choses...
+                            </p>
+                            <span class="text-xs text-gray-400 dark:text-gray-500 uppercase">14 Octobre 2024</span>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+        </div>
+
+    </main>
+
+    <!-- ==================== PIED DE PAGE "PORTAIL ÉDITORIAL" AVEC TAILWIND CSS ==================== -->
+    <footer class="bg-gray-100 dark:bg-gray-800 mt-16 md:mt-24">
+        <div class="container mx-auto px-4 py-12">
+            <!-- Section principale du footer -->
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-8">
+                
+                <!-- Colonne 1: Logo & Social (plus large) -->
+                <div class="md:col-span-12 lg:col-span-5 text-center lg:text-left">
+                    <a href="index.html">
+                        <img src="logo.png" alt="MADA i24H NEWS Logo" class="h-16 mb-4 mx-auto lg:mx-0">
+                    </a>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm max-w-sm mx-auto lg:mx-0">
+                        Votre source d'information fiable et en continu. L'actualité analysée et décryptée par des professionnels.
+                    </p>
+                    <div class="mt-6 flex justify-center lg:justify-start gap-5">
+                        <a href="#" class="text-gray-500 hover:text-primary dark:hover:text-white transition-colors"><i class="fab fa-facebook-f text-xl"></i></a>
+                        <a href="#" class="text-gray-500 hover:text-primary dark:hover:text-white transition-colors"><i class="fab fa-twitter text-xl"></i></a>
+                        <a href="#" class="text-gray-500 hover:text-primary dark:hover:text-white transition-colors"><i class="fab fa-linkedin-in text-xl"></i></a>
+                    </div>
+                </div>
+
+                <!-- Colonne 2: Liens -->
+                <div class="md:col-span-6 lg:col-span-2 text-center lg:text-left">
+                    <h3 class="font-title text-lg uppercase text-dark dark:text-white mb-4">Explorer</h3>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-white">À Propos</a></li>
+                        <li><a href="#" class="text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-white">Contact</a></li>
+                        <li><a href="#" class="text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-white">Notre Équipe</a></li>
+                        <li><a href="#" class="text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-white">Mentions Légales</a></li>
+                    </ul>
+                </div>
+
+                <!-- Colonne 3: Catégories -->
+                <div class="md:col-span-6 lg:col-span-2 text-center lg:text-left">
+                    <h3 class="font-title text-lg uppercase text-dark dark:text-white mb-4">Catégories</h3>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-white">Politique</a></li>
+                        <li><a href="#" class="text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-white">Économie</a></li>
+                        <li><a href="#" class="text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-white">Sociale</a></li>
+                        <li><a href="#" class="text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-white">Culturel</a></li>
+                    </ul>
+                </div>
+
+                <!-- Colonne 4: Newsletter -->
+                <div class="md:col-span-12 lg:col-span-3 text-center lg:text-left">
+                    <h3 class="font-title text-lg uppercase text-dark dark:text-white mb-4">Restez Informé</h3>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">
+                        Recevez notre newsletter hebdomadaire avec le meilleur de l'actualité.
+                    </p>
+                    <form class="flex flex-col sm:flex-row">
+                        <input type="email" placeholder="Votre adresse email" class="w-full sm:flex-grow p-3 border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary mb-2 sm:mb-0 sm:mr-2">
+                        <button type="submit" class="w-full sm:w-auto p-3 bg-red text-white font-bold uppercase hover:bg-red-700 transition-colors">S'inscrire</button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Ligne de copyright -->
+            <div class="border-t border-gray-200 dark:border-gray-700 mt-8 pt-6 text-center text-sm text-gray-500 dark:text-gray-400">
+                <p>&copy; 2024 - MADA i24H NEWS - Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+</body>
+</html>

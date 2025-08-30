@@ -1,0 +1,475 @@
+/* ==========================================================================
+   MADA i24H NEWS - FEUILLE DE STYLE FINALE
+   Version 1.1 - Nettoyée, Optimisée et Responsive
+   ========================================================================== */
+
+/* =============================================
+   1. VARIABLES & STYLES GLOBAUX
+   ============================================= */
+:root {
+    --color-blue: #0057E0;
+    --color-red: #D40000;
+    --color-dark-gray: #1A1A1A;
+    --color-light-gray: #F5F5F7;
+    --color-white: #FFFFFF;
+    --font-title: 'Oswald', sans-serif;
+    --font-body: 'Roboto', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-body);
+    background-color: var(--color-light-gray);
+    color: var(--color-dark-gray);
+    border-top: 3px solid #4a1e9e;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+main {
+    padding-top: 50px;
+}
+
+/* =============================================
+   2. EN-TÊTE (HEADER)
+   ============================================= */
+.main-header {
+    background-color: var(--color-blue);
+    color: var(--color-white);
+    padding: 15px 0;
+    position: relative;
+}
+
+.main-header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+
+.logo-link {
+    position: absolute;
+    left: 20px;
+    top: 5px;
+    z-index: 20;
+}
+
+.logo {
+    height: 100px;
+}
+
+.main-nav {
+    margin-left: 220px; /* Espace pour le logo */
+}
+
+.main-nav ul {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+}
+
+.main-nav a {
+    color: var(--color-white);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.1rem;
+    transition: color 0.3s;
+}
+.main-nav a:hover { color: var(--color-red); }
+
+.header-search {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+.search-input {
+    width: 0; opacity: 0; border: none; padding: 8px 0;
+    transition: all 0.4s ease-in-out;
+    background: transparent; color: var(--color-white);
+    border-bottom: 2px solid var(--color-white); font-size: 1rem;
+}
+.search-input::placeholder { color: rgba(255, 255, 255, 0.7); }
+.search-input:focus { outline: none; }
+.search-toggle-icon { font-size: 1.5rem; cursor: pointer; margin-left: 15px; transition: color 0.3s; }
+.header-search.active .search-input { width: 200px; opacity: 1; padding: 8px 15px; margin-right: 15px; }
+.header-search.active .search-toggle-icon { color: var(--color-red); }
+
+/* =============================================
+   3. PIED DE PAGE (FOOTER)
+   ============================================= */
+.main-footer {
+    background-color: var(--color-blue);
+    color: rgba(255, 255, 255, 0.8);
+    padding-top: 60px;
+    margin-top: 60px;
+}
+.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1.5fr; gap: 40px; padding-bottom: 40px; }
+.logo-footer { height: 80px; margin-bottom: 20px; }
+.footer-col h3 { font-family: var(--font-title); color: var(--color-white); font-size: 1.3rem; text-transform: uppercase; margin-bottom: 20px; }
+.footer-col ul { list-style: none; }
+.footer-col ul a { color: rgba(255, 255, 255, 0.8); text-decoration: none; line-height: 2.2; transition: color 0.3s; }
+.footer-col ul a:hover { color: var(--color-white); }
+.social-icons { margin-top: 20px; display: flex; gap: 15px; }
+.social-icons a { color: var(--color-white); font-size: 1.2rem; }
+.newsletter-form input { width: 100%; padding: 12px; border: none; margin-bottom: 10px; }
+.newsletter-form button { width: 100%; padding: 12px; border: none; background-color: var(--color-red); color: var(--color-white); font-weight: 700; cursor: pointer; text-transform: uppercase; }
+.footer-bottom { background-color: rgba(0,0,0,0.2); text-align: center; padding: 15px 0; font-size: 0.9rem; }
+
+
+/* =============================================
+   4. COMPOSANTS COMMUNS
+   ============================================= */
+
+/* --- Cartes d'articles (pour la grille "Autres Actualités") --- */
+.article-card {
+    background-color: var(--color-white);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+    display: flex;
+    flex-direction: column;
+}
+.article-card:hover { transform: translateY(-5px); box-shadow: 0 8px 20px rgba(0,0,0,0.1); }
+.card-image-container { position: relative; overflow: hidden; }
+.article-card img { width: 100%; height: 200px; object-fit: cover; transition: transform 0.3s ease-in-out; }
+.article-card:hover img { transform: scale(1.05); }
+.card-overlay {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
+    background-color: rgba(0, 87, 224, 0.8);
+    color: var(--color-white); text-decoration: none;
+    opacity: 0; transition: opacity 0.3s ease-in-out;
+}
+.article-card:hover .card-overlay { opacity: 1; }
+.card-overlay i { font-size: 2.5rem; margin-bottom: 10px; }
+.card-overlay span { font-family: var(--font-title); text-transform: uppercase; font-size: 1.1rem; }
+.card-content { padding: 20px; flex-grow: 1; display: flex; flex-direction: column; }
+.card-content h3 { font-size: 1.2rem; margin-bottom: 10px; flex-grow: 1; }
+.card-content h3 a { text-decoration: none; color: var(--color-dark-gray); transition: color 0.3s; }
+.card-content h3 a:hover { color: var(--color-red); }
+
+/* --- Éléments partagés (catégories, métadonnées) --- */
+.card-category {
+    color: var(--color-red);
+    font-weight: 700;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    display: block;
+}
+.article-meta { font-size: 0.8rem; color: #888; display: block; }
+.article-excerpt { font-size: 0.9rem; line-height: 1.6; color: #555; margin-top: 15px; }
+
+/* --- Barre de Titre de Section --- */
+.section-header, .section-title-bar {
+    display: flex; justify-content: space-between; align-items: center;
+    border-bottom: 2px solid var(--color-red);
+    padding-bottom: 10px; margin-bottom: 25px;
+}
+.section-main-title {
+    font-family: var(--font-title); font-size: 1.5rem; text-transform: uppercase;
+    display: flex; align-items: center; gap: 10px;
+}
+.title-square { width: 15px; height: 15px; background-color: var(--color-red); }
+.section-nav-links a { margin-left: 20px; text-decoration: none; color: #555; font-weight: 700; }
+.section-nav-links a:hover { color: var(--color-red); }
+
+/* =============================================
+   5. MISE EN PAGE SPÉCIFIQUE
+   ============================================= */
+
+/* --- Page d'Accueil : Info Bar & Grille "A la une" --- */
+.info-bar-container { background-color: var(--color-white); padding: 10px 0; border-bottom: 1px solid #eee; }
+.flash-news-ticker { display: flex; align-items: center; background-color: #f1f1f1; padding: 8px; overflow: hidden; }
+.ticker-label { background-color: var(--color-red); color: var(--color-white); padding: 5px 15px; font-weight: 700; font-size: 0.9rem; white-space: nowrap; }
+.ticker-label i { margin-left: 5px; }
+.ticker-content { flex-grow: 1; overflow: hidden; }
+.ticker-content ul { display: flex; list-style: none; animation: ticker-scroll 40s linear infinite; margin: 0; padding-left: 20px; }
+.ticker-content li { white-space: nowrap; padding: 0 20px; display: flex; align-items: center; }
+.ticker-content li::after { content: '◆'; color: var(--color-red); margin-left: 20px; }
+.ticker-content a { text-decoration: none; color: var(--color-dark-gray); }
+.ticker-content a:hover { color: var(--color-blue); }
+
+.homepage-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 40px; margin-top: 25px; }
+.sidebar-column .section-title-bar { padding: 10px; background-color: var(--color-white); }
+.sidebar-column .section-main-title { font-size: 1.2rem; }
+.widget-article-list { background-color: var(--color-white); padding: 20px; }
+.widget-article-item {
+    display: flex; align-items: center; gap: 15px; text-decoration: none; color: var(--color-dark-gray);
+    padding-bottom: 15px; border-bottom: 1px solid var(--color-light-gray);
+}
+.widget-article-item:last-child { border: none; padding: 0; }
+.widget-article-item:hover .widget-article-info p { color: var(--color-red); }
+.widget-article-item img { width: 80px; height: 60px; object-fit: cover; flex-shrink: 0; }
+.widget-article-info p { font-weight: 700; line-height: 1.3; margin-bottom: 5px; transition: color 0.3s; }
+.widget-article-date { font-size: 0.8rem; color: #888; }
+
+.hero-article-card {
+    position: relative; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+.hero-article-card img { width: 100%; height: 500px; object-fit: cover; transition: transform 0.3s ease-in-out; }
+.hero-article-card:hover img { transform: scale(1.05); }
+.hero-article-card::after { /* Dégradé */
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.8), transparent 60%);
+}
+.hero-article-content {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    z-index: 5; padding: 2rem; color: var(--color-white);
+}
+.hero-article-content .card-category { background-color: var(--color-red); padding: 5px 10px; display: inline-block; }
+.hero-article-content h2 { font-family: var(--font-title); font-size: 2.5rem; line-height: 1.2; margin: 10px 0; }
+.hero-article-content h2 a { text-decoration: none; color: var(--color-white); }
+.hero-article-content .article-meta { color: rgba(255,255,255,0.8); }
+.hero-article-content .article-excerpt { color: rgba(255,255,255,0.9); }
+
+/* --- Page d'Accueil : Grille "Autres Actualités" --- */
+.articles-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+
+
+/* ==========================================================================
+   NOUVELLE SECTION PRINCIPALE (GRILLE 2x2 + SIDEBAR)
+   ========================================================================== */
+
+/* 1. Mise en page principale (réutilise .main-layout) */
+.main-layout {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 40px;
+    margin-top: 40px;
+}
+
+/* 2. Grille des articles à gauche */
+.articles-grid-2-cols {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+/* 3. Bouton "Voir plus" */
+.load-more-container {
+    text-align: center;
+    margin-top: 40px;
+}
+.load-more-btn {
+    background-color: var(--color-dark-gray);
+    color: var(--color-white);
+    border: none;
+    padding: 12px 30px;
+    font-weight: 700;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+.load-more-btn:hover {
+    background-color: var(--color-red);
+}
+
+/* 4. Nouvelle Sidebar & Widgets */
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+.sidebar .widget {
+    background-color: var(--color-white);
+    padding: 25px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+.sidebar .widget h4 {
+    font-family: var(--font-title);
+    text-transform: uppercase;
+    font-size: 1.1rem;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+/* Widget Logo */
+.logo-widget {
+    padding: 20px;
+    text-align: center;
+}
+.logo-widget img {
+    max-width: 100%;
+    height: auto;
+}
+.logo-widget .social-icons {
+    justify-content: center;
+    margin-top: 20px;
+    gap: 20px;
+}
+.logo-widget .social-icons a {
+    color: var(--color-blue);
+    font-size: 1.1rem;
+}
+
+/* Widget Recherche */
+.sidebar-search-form {
+    display: flex;
+}
+.sidebar-search-form input {
+    width: 100%;
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-right: none;
+}
+.sidebar-search-form input:focus {
+    outline: 1px solid var(--color-blue);
+}
+.sidebar-search-form button {
+    border: none;
+    background-color: var(--color-red);
+    color: var(--color-white);
+    padding: 0 20px;
+    cursor: pointer;
+    font-weight: 700;
+}
+
+/* Widget Filtre */
+.filter-widget select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    background-color: #fff;
+    font-size: 1rem;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-chevron-down' viewBox='0 0 16 16'%3E%3Cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 15px center;
+}
+
+/* Widget Bannière */
+.banner-widget {
+    padding: 0;
+}
+.banner-widget img {
+    width: 100%;
+    display: block;
+}
+
+.custom-sidebar {
+    margin-top: -8px;
+}
+
+
+/* =============================================
+   6. ANIMATIONS
+   ============================================= */
+@keyframes ticker-scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); } /* Pour une boucle parfaite avec contenu dupliqué */
+}
+
+
+/* =============================================
+   7. RESPONSIVE
+   ============================================= */
+.mobile-nav-toggle { display: none; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); border-width: 0; }
+
+/* --- Tablettes --- */
+@media (max-width: 992px) {
+    main { padding-top: 30px; }
+    .main-nav { padding-left: 180px; }
+    .logo { height: 80px; }
+    .homepage-grid { grid-template-columns: 1fr; }
+    .sidebar-column { margin-top: 40px; }
+    .articles-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* --- Mobiles --- */
+@media (max-width: 768px) {
+    main { padding-top: 20px; }
+    .main-header { padding: 15px 0; }
+    .main-header .container { position: relative; justify-content: space-between; align-items: center; }
+    .logo { height: 60px; }
+    .logo-link { position: static; order: 1; }
+    .header-search { display: none; } /* On cache la recherche desktop */
+    .mobile-nav-toggle {
+        display: block; position: absolute;
+        left: 50%; top: 50%;
+        transform: translate(-50%, -50%);
+        order: 2; z-index: 1001;
+        background: transparent; border: none;
+        width: 30px; height: 24px; cursor: pointer;
+    }
+    .burger-icon {
+        display: block; position: relative; width: 100%; height: 3px;
+        background-color: var(--color-white); transition: all 0.2s ease-in-out;
+    }
+    .burger-icon::before, .burger-icon::after {
+        content: ''; position: absolute; left: 0; width: 100%; height: 3px;
+        background-color: var(--color-white); transition: all 0.2s ease-in-out;
+    }
+    .burger-icon::before { top: -8px; }
+    .burger-icon::after { bottom: -8px; }
+    .mobile-nav-toggle.active .burger-icon { background-color: transparent; }
+    .mobile-nav-toggle.active .burger-icon::before { transform: translateY(8px) rotate(45deg); }
+    .mobile-nav-toggle.active .burger-icon::after { transform: translateY(-8px) rotate(-45deg); }
+
+    .main-nav {
+        position: fixed; top: 0; left: -100%;
+        width: 80%; max-width: 300px; height: 100vh;
+        background-color: var(--color-dark-gray);
+        padding: 100px 30px;
+        transition: left 0.4s ease-in-out;
+        z-index: 1000; overflow-y: auto;
+    }
+    .main-nav.active { left: 0; }
+    .main-nav ul { flex-direction: column; align-items: flex-start; gap: 25px; }
+    .main-nav a { font-size: 1.2rem; }
+    body.no-scroll { overflow: hidden; }
+
+    .articles-grid { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr; text-align: center; }
+    .footer-col .logo-footer, .social-icons { margin-left: auto; margin-right: auto; justify-content: center; }
+    .hero-article-content h2 { font-size: 1.8rem; }
+    .hero-article-content .article-excerpt { display: none; }
+}
+
+/* ==========================================================================
+   RESPONSIVE - NOUVELLE SECTION PRINCIPALE (GRILLE + SIDEBAR)
+   ========================================================================== */
+
+/* --- Tablettes (~992px et moins) --- */
+@media (max-width: 992px) {
+    /* On passe la grille principale à une seule colonne */
+    .main-layout {
+        grid-template-columns: 1fr;
+    }
+
+    /* On s'assure que la sidebar se place bien en dessous */
+    .sidebar {
+        margin-top: 40px;
+    }
+
+    /* La grille des articles reste à 2 colonnes sur tablette */
+    .articles-grid-2-cols {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+
+/* --- Mobiles (~768px et moins) --- */
+@media (max-width: 768px) {
+    /* La grille des articles passe à une seule colonne pour une meilleure lisibilité */
+    .articles-grid-2-cols {
+        grid-template-columns: 1fr;
+    }
+
+    /* On réduit l'espace entre les colonnes sur mobile */
+    .main-layout {
+        gap: 30px;
+    }
+}

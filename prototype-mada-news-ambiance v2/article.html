@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="fr" class="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SADC : Cyril Ramaphosa salue le leadership du Président - MADA i24H NEWS</title>
+    
+    <!-- Polices & Icônes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Roboto:wght@400;700&family=Merriweather:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: { 'primary': '#0057E0', 'accent': '#D40000', 'dark': '#1A1A1A', 'light': '#FDFDFD' },
+                    fontFamily: { 'title': ['Oswald', 'sans-serif'], 'body': ['Roboto', 'sans-serif'], 'serif': ['Merriweather', 'serif'] }
+                }
+            }
+        }
+    </script>
+    <!-- CSS Personnalisé -->
+    <style>
+        .burger-icon { display: block; position: relative; width: 100%; height: 3px; background-color: white; transition: all 0.2s ease-in-out; }
+        .burger-icon::before, .burger-icon::after { content: ''; position: absolute; left: 0; width: 100%; height: 3px; background-color: white; transition: all 0.2s ease-in-out; }
+        .burger-icon::before { top: -8px; } .burger-icon::after { bottom: -8px; }
+        .mobile-nav-toggle.active .burger-icon { background-color: transparent; }
+        .mobile-nav-toggle.active .burger-icon::before { transform: translateY(8px) rotate(45deg); }
+        .mobile-nav-toggle.active .burger-icon::after { transform: translateY(-8px) rotate(-45deg); }
+        #main-header.scrolled { background-color: rgba(253, 253, 253, 0.98); color: #1A1A1A; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); }
+        .dark #main-header.scrolled { background-color: rgba(17, 24, 39, 0.98); color: white; }
+        #header-logo.scrolled { height: 4rem; }
+    </style>
+</head>
+<body class="bg-light dark:bg-gray-900 text-dark dark:text-gray-200 transition-colors duration-500">
+
+    <!-- ==================== EN-TÊTE FLOTTANT AVEC TAILWIND CSS ==================== -->
+    <header id="main-header" class="fixed top-0 left-0 right-0 z-50 text-white transition-all duration-300 ease-in-out">
+        <div class="container mx-auto flex justify-between items-center p-4">
+            <!-- Côté Gauche : Date -->
+            <div id="current-date" class="hidden md:block text-sm font-semibold uppercase tracking-wider">
+                <!-- La date sera injectée ici par JS -->
+            </div>
+
+            <!-- Centre : Logo -->
+            <div class="absolute left-1/2 -translate-x-1/2">
+                <a href="index.html">
+                    <img src="logo.png" alt="MADA i24H NEWS Logo" id="header-logo" class="h-16 lg:h-20 transition-all duration-300">
+                </a>
+            </div>
+
+            <!-- Côté Droit : Actions & Mode Sombre -->
+            <div class="flex items-center gap-4 md:gap-6">
+                <button id="search-toggle" class="text-xl hover:text-accent transition-colors"><i class="fas fa-search"></i></button>
+                <button id="filter-toggle" class="text-xl hover:text-accent transition-colors"><i class="fas fa-filter"></i></button>
+                <button id="theme-toggle" class="text-xl hover:text-accent transition-colors">
+                    <i class="fas fa-moon" id="theme-icon"></i> <!-- L'icône changera en soleil avec JS -->
+                </button>
+            </div>
+        </div>
+
+        <!-- Panneau de Recherche (caché par défaut) -->
+        <div id="search-panel" class="hidden bg-white/95 dark:bg-black/95 backdrop-blur-md p-4 shadow-lg">
+            <div class="container mx-auto">
+                <input type="search" placeholder="Rechercher un article..." class="w-full bg-transparent border-b-2 border-dark dark:border-white p-2 text-dark dark:text-white focus:outline-none placeholder:text-gray-500">
+            </div>
+        </div>
+        <!-- Panneau de Filtres (caché par défaut) -->
+        <div id="filter-panel" class="hidden bg-white/95 dark:bg-black/95 backdrop-blur-md p-6 shadow-lg">
+            <div class="container mx-auto grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4 text-center">
+                <a href="#" class="font-semibold uppercase text-dark dark:text-white hover:text-accent transition-colors">Politique</a>
+                <a href="#" class="font-semibold uppercase text-dark dark:text-white hover:text-accent transition-colors">Économie</a>
+                <a href="#" class="font-semibold uppercase text-dark dark:text-white hover:text-accent transition-colors">Sociale</a>
+                <a href="#" class="font-semibold uppercase text-dark dark:text-white hover:text-accent transition-colors">Santé</a>
+                <a href="#" class="font-semibold uppercase text-dark dark:text-white hover:text-accent transition-colors">Culturel</a>
+                <a href="#" class="font-semibold uppercase text-dark dark:text-white hover:text-accent transition-colors">Environnement</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="pt-24 md:pt-32">
+        <!-- ==================== EN-TÊTE DE L'ARTICLE ==================== -->
+        <header class="article-header-container text-center max-w-4xl mx-auto px-4">
+            <div class="mb-4">
+                <a href="#" class="font-title text-accent uppercase tracking-widest text-sm font-bold">Politique</a>
+            </div>
+            <h1 class="font-serif text-4xl md:text-5xl lg:text-6xl font-black text-dark dark:text-white leading-tight">
+                SADC : Cyril Ramaphosa salue le leadership du Président
+            </h1>
+            <p class="mt-6 text-lg text-gray-500 dark:text-gray-400">
+                L'élection s'est déroulée lors du 45ᵉ Sommet des Chefs d’État et de Gouvernement à Antananarivo.
+            </p>
+            <div class="mt-8 flex justify-center items-center gap-4 text-sm text-gray-400 border-t border-b border-gray-200 dark:border-gray-700 py-4">
+                <span>par <strong>admin</strong></span>
+                <span class="text-gray-300 dark:text-gray-600">&bull;</span>
+                <span>19 août 2025</span>
+                <span class="text-gray-300 dark:text-gray-600">&bull;</span>
+                <span class="flex items-center gap-1"><i class="far fa-clock"></i> 4 min de lecture</span>
+            </div>
+        </header>
+
+        <!-- ==================== IMAGE À LA UNE ==================== -->
+        <figure class="max-w-6xl mx-auto mt-12">
+            <img src="https://cdn.pixabay.com/photo/2021/08/13/13/43/kids-6543143_1280.jpg" alt="Image principale de l'article" class="w-full">
+            <figcaption class="text-center text-xs text-gray-400 mt-2">Légende de l'image descriptive. Photo: TDN PHOTO</figcaption>
+        </figure>
+
+        <!-- ==================== CORPS DE L'ARTICLE ==================== -->
+        <article class="max-w-3xl mx-auto mt-12 px-4">
+            <div class="article-body-content font-serif text-lg md:text-xl leading-relaxed text-gray-800 dark:text-gray-300 space-y-8">
+                <p>
+                    <strong class="font-bold text-dark dark:text-white">ANTANANARIVO - Le président sud-africain Cyril Ramaphosa a été désigné à la tête de la Communauté de Développement de l'Afrique Australe (SADC) pour la période 2026-2027. L'élection a eu lieu lors du 45ᵉ Sommet des Chefs d’État et de Gouvernement.</strong>
+                </p>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                </p>
+                <h2 class="font-title text-3xl md:text-4xl font-bold text-dark dark:text-white !mt-16 !mb-6">
+                    Un nouveau chapitre pour la coopération régionale
+                </h2>
+                <p>
+                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                </p>
+                <blockquote class="border-l-4 border-accent pl-6 py-2 my-8 text-xl md:text-2xl italic text-gray-600 dark:text-gray-400">
+                    "Ceci est une citation importante qui met en évidence un point clé de l'article. Elle doit se démarquer visuellement du reste du texte."
+                </blockquote>
+                <p>
+                    Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
+                </p>
+            </div>
+            
+            <!-- Partage et Tags -->
+            <div class="mt-12 py-6 border-t border-gray-200 dark:border-gray-700">
+                <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+                    <div class="flex items-center gap-3">
+                        <span class="font-bold text-sm">Partager :</span>
+                        <a href="#" class="text-gray-500 hover:text-primary"><i class="fab fa-facebook-f text-lg"></i></a>
+                        <a href="#" class="text-gray-500 hover:text-primary"><i class="fab fa-twitter text-lg"></i></a>
+                        <a href="#" class="text-gray-500 hover:text-primary"><i class="fab fa-linkedin-in text-lg"></i></a>
+                    </div>
+                    <div class="flex items-center gap-2 text-sm">
+                        <span class="font-bold">Tags :</span>
+                        <a href="#" class="bg-gray-200 dark:bg-gray-700 px-2 py-1 hover:bg-accent hover:text-white">SADC</a>
+                        <a href="#" class="bg-gray-200 dark:bg-gray-700 px-2 py-1 hover:bg-accent hover:text-white">Politique</a>
+                    </div>
+                </div>
+            </div>
+        </article>
+        
+        <!-- ==================== SECTION COMMENTAIRES ==================== -->
+        <section class="max-w-3xl mx-auto mt-12 px-4">
+             <!-- ... (la section commentaire peut être intégrée ici) ... -->
+        </section>
+
+    </main>
+
+        <!-- ==================== PIED DE PAGE "PORTAIL ÉDITORIAL" AVEC TAILWIND CSS ==================== -->
+    <footer class="bg-gray-100 dark:bg-gray-800 mt-16 md:mt-24">
+        <div class="container mx-auto px-4 py-12">
+            <!-- Section principale du footer -->
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-8">
+                
+                <!-- Colonne 1: Logo & Social (plus large) -->
+                <div class="md:col-span-12 lg:col-span-5 text-center lg:text-left">
+                    <a href="index.html">
+                        <img src="logo.png" alt="MADA i24H NEWS Logo" class="h-16 mb-4 mx-auto lg:mx-0">
+                    </a>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm max-w-sm mx-auto lg:mx-0">
+                        Votre source d'information fiable et en continu. L'actualité analysée et décryptée par des professionnels.
+                    </p>
+                    <div class="mt-6 flex justify-center lg:justify-start gap-5">
+                        <a href="#" class="text-gray-500 hover:text-primary dark:hover:text-white transition-colors"><i class="fab fa-facebook-f text-xl"></i></a>
+                        <a href="#" class="text-gray-500 hover:text-primary dark:hover:text-white transition-colors"><i class="fab fa-twitter text-xl"></i></a>
+                        <a href="#" class="text-gray-500 hover:text-primary dark:hover:text-white transition-colors"><i class="fab fa-linkedin-in text-xl"></i></a>
+                    </div>
+                </div>
+
+                <!-- Colonne 2: Liens -->
+                <div class="md:col-span-6 lg:col-span-2 text-center lg:text-left">
+                    <h3 class="font-title text-lg uppercase text-dark dark:text-white mb-4">Explorer</h3>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-white">À Propos</a></li>
+                        <li><a href="#" class="text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-white">Contact</a></li>
+                        <li><a href="#" class="text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-white">Notre Équipe</a></li>
+                        <li><a href="#" class="text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-white">Mentions Légales</a></li>
+                    </ul>
+                </div>
+
+                <!-- Colonne 3: Catégories -->
+                <div class="md:col-span-6 lg:col-span-2 text-center lg:text-left">
+                    <h3 class="font-title text-lg uppercase text-dark dark:text-white mb-4">Catégories</h3>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-white">Politique</a></li>
+                        <li><a href="#" class="text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-white">Économie</a></li>
+                        <li><a href="#" class="text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-white">Sociale</a></li>
+                        <li><a href="#" class="text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-white">Culturel</a></li>
+                    </ul>
+                </div>
+
+                <!-- Colonne 4: Newsletter -->
+                <div class="md:col-span-12 lg:col-span-3 text-center lg:text-left">
+                    <h3 class="font-title text-lg uppercase text-dark dark:text-white mb-4">Restez Informé</h3>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">
+                        Recevez notre newsletter hebdomadaire avec le meilleur de l'actualité.
+                    </p>
+                    <form class="flex flex-col sm:flex-row">
+                        <input type="email" placeholder="Votre adresse email" class="w-full sm:flex-grow p-3 border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary mb-2 sm:mb-0 sm:mr-2">
+                        <button type="submit" class="w-full sm:w-auto p-3 bg-red text-white font-bold uppercase hover:bg-red-700 transition-colors">S'inscrire</button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Ligne de copyright -->
+            <div class="border-t border-gray-200 dark:border-gray-700 mt-8 pt-6 text-center text-sm text-gray-500 dark:text-gray-400">
+                <p>&copy; 2024 - MADA i24H NEWS - Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- Lien vers le fichier JavaScript -->
+    <script src="main.js"></script>
+</body>
+</html>

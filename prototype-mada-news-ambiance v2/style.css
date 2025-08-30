@@ -1,0 +1,101 @@
+/* style.css (Version Corrigée et Simplifiée) */
+
+/* --- STYLE DE BASE DE L'EN-TÊTE (TRANSPARENT) --- */
+#main-header {
+    color: white; /* Texte blanc par défaut */
+}
+
+/* --- STYLE DE L'EN-TÊTE QUAND ON A SCROLLÉ --- */
+#main-header.scrolled {
+    background-color: rgba(255, 255, 255, 0.98);
+    color: #1A1A1A; /* Texte devient noir */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* --- VERSION SOMBRE DE L'EN-TÊTE SCROLLÉ --- */
+.dark #main-header.scrolled {
+    background-color: rgba(17, 24, 39, 0.98); /* bg-gray-900 */
+    color: white; /* Texte redevient blanc */
+}
+
+/* --- RÉDUCTION DU LOGO AU SCROLL --- */
+#header-logo.scrolled {
+    height: 4rem; /* 64px */
+}
+
+/* --- STYLES DE TITRES PERSONNALISÉS --- */
+.category-banner::after {
+    content: ''; position: absolute; top: 0; right: -14px;
+    border-top: 18px solid transparent;
+    border-bottom: 18px solid transparent;
+    border-left: 14px solid #D40000; /* --color-red */
+}
+
+.highlight {
+    background: linear-gradient(180deg, rgba(255,255,255,0) 60%, rgba(212, 0, 0, 0.5) 60%);
+    padding: 0 0.2em;
+}
+
+/* --- NOUVELLE SECTION : MISE EN PAGE "JOURNAL PAPIER" --- */
+
+.newspaper-layout {
+    /* Sur les grands écrans, on active les colonnes */
+    column-count: 3;
+    column-gap: 2.5rem; /* 40px */
+    column-rule: 1px solid #e5e7eb; /* Une fine ligne grise entre les colonnes */
+}
+
+/* On s'assure que les titres et les images ne se coupent pas entre deux colonnes */
+.newspaper-layout h3,
+.newspaper-layout img {
+    break-inside: avoid;
+    page-break-inside: avoid;
+}
+
+/* --- NOUVEAU STYLE : TITRE DE SECTION "RUBAN" --- */
+.section-tag-title {
+    position: relative;
+    background-color: #1A1A1A; /* --color-dark-gray */
+    padding: 0.75rem 1.5rem; /* 12px 24px */
+    display: inline-block; /* Pour que le fond ne prenne que la largeur du texte */
+    margin-bottom: 2rem; /* Espace en dessous du titre */
+}
+
+/* Crée le triangle sur la gauche avec un pseudo-élément */
+.section-tag-title::before {
+    content: '';
+    position: absolute;
+    top: 0px;
+    left: -18px;
+    border-top: 44px solid transparent;
+    border-bottom: 4px solid transparent;
+    border-right: 18px solid #555454;
+}
+
+/* Version pour le mode sombre */
+.dark .section-tag-title {
+    background-color: #FDFDFD; /* --color-light */
+}
+.dark .section-tag-title h2 {
+    color: #1A1A1A; /* --color-dark-gray */
+}
+.dark .section-tag-title::before {
+    border-right-color: #FDFDFD; /* Le triangle change de couleur aussi */
+}
+
+/* Pour les écrans plus petits (tablettes), on passe à 2 colonnes */
+@media (max-width: 992px) {
+    .newspaper-layout {
+        column-count: 2;
+    }
+}
+
+/* Pour les mobiles, on désactive les colonnes et on revient à un flux normal */
+@media (max-width: 768px) {
+    .newspaper-layout {
+        column-count: 1;
+    }
+    .newspaper-column {
+        margin-bottom: 2rem; /* On ajoute un espace entre les "colonnes" empilées */
+    }
+}
